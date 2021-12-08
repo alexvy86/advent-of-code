@@ -23,12 +23,19 @@ def board_won(board): # pylint: disable=missing-function-docstring
 def calculate_winning_score(winning_board, winning_number): # pylint: disable=missing-function-docstring
     return sum(cell for row in winning_board for cell in row if cell != -1) * winning_number
 
+boards_already_won = [] # pylint: disable=invalid-name
 for n in numbers:
     for board_num, board in enumerate(boards):
+        if board_num in boards_already_won:
+            continue
         for i, row in enumerate(board):
             for j, cell in enumerate(row):
                 if cell == n:
                     board[i][j] = -1
                     if board_won(board):
-                        print(calculate_winning_score(board, n))
-                        sys.exit()
+                        boards_already_won.append(board_num)
+                        if len(boards_already_won) == 1:
+                            print(calculate_winning_score(board, n))
+                        if len(boards_already_won) == len(boards):
+                            print(calculate_winning_score(board, n))
+                            sys.exit()
