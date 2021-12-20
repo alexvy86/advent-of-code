@@ -1,2 +1,5 @@
 [MESSAGES CONTROL]
 disable=unspecified-encoding,missing-module-docstring
+
+[FORMAT]
+max-line-length=150
