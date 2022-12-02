@@ -8,4 +8,4 @@ with open('day1.input') as f:
         else:
             current_elfs_items.append(int(line))
 
-print(max(sum(elfs_items) for elfs_items in items))
+print(sum(sorted((sum(elfs_items) for elfs_items in items), reverse=True)[:3]))
