@@ -7,5 +7,4 @@
     },
     "javascript.suggest.includeAutomaticOptionalChainCompletions": false,
     "debug.saveBeforeStart": "none",
-    "c3.welcome.showFeatureHighlight": false
 }
