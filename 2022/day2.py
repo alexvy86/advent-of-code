@@ -5,10 +5,13 @@ def calculate_round_score(opponent, you):
 
 with open('day2.input') as f:
     for line in f.read().splitlines():
-        [opponent, you] = line.split()
-        opponent_value = "ABC".index(opponent) + 1
-        you_value = "XYZ".index(you) + 1
+        [opponent, desired_result] = line.split()
+        opponent_value = "ABC".index(opponent)
+        you_value = opponent_value if desired_result == "Y" else \
+                    (opponent_value - 1) % 3 if desired_result == "X" else \
+                    (opponent_value + 1) % 3
         # print (f"{opponent}({opponent_value}) {you}({you_value})")
-        total_score += you_value + calculate_round_score(opponent_value, you_value)
+        shape_score = you_value + 1
+        total_score += shape_score + calculate_round_score(opponent_value, you_value)
 
 print(total_score)
