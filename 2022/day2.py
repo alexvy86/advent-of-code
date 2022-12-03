@@ -5,8 +5,8 @@ def calculate_round_score(opponent, you):
 
 with open('day2.input') as f:
     for line in f.read().splitlines():
-        [opponent, desired_result] = line.split()
-        opponent_value = "ABC".index(opponent)
+        [opponent_raw, desired_result] = line.split()
+        opponent_value = "ABC".index(opponent_raw)
         you_value = opponent_value if desired_result == "Y" else \
                     (opponent_value - 1) % 3 if desired_result == "X" else \
                     (opponent_value + 1) % 3
