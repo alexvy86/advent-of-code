@@ -35,7 +35,13 @@ with open('day5.input') as f:
                 current_stack_index += 1
         else:
             (how_many, src_stack, target_stack) = parse_move(line)
-            for i in range(how_many):
-                stacks[target_stack].append(stacks[src_stack].pop())
+            # Part 1
+            # for i in range(how_many):
+            #     stacks[target_stack].append(stacks[src_stack].pop())
+            # Part 2
+            src = stacks[src_stack]
+            stacks[target_stack] += src[(len(src) - how_many):]
+            stacks[src_stack] = src[0:(len(src) - how_many)]
+
 
 print(reduce(lambda acc, current: acc + current.pop(), stacks[1:], ""))
